@@ -30,16 +30,39 @@ public:
 		}
 	}
 
-	const char* get_Fullname() const {
-		return fullname ? fullname : "No name";
+	Person& operator=(const Person& obj){
+		if (this == &obj) { return *this; }
+
+		delete[] fullname;
+		fullname = new char[strlen(obj.fullname) + 1];
+		strcpy_s(fullname, strlen(obj.fullname) + 1, obj.fullname);
+		age = obj.age;
+		number = obj.number;
+		
+		return *this;
 	}
 
-	const int get_age() const{
-		return age ? age : 0;
+
+	Person(Person&& another) {
+		fullname = another.fullname;
+		age = another.age;
+		number = another.number;
+
+		another.fullname = nullptr;
+		another.age = 0;
+		another.number = 0;
 	}
 
-	const long get_number() const{
-		return number ? number : 0;
+	char* get_Fullname() {
+		return fullname;
+	}
+
+	int& get_age() {
+		return age;
+	}
+
+	long& get_number() {
+		return number;
 	}
 };
 

@@ -13,13 +13,13 @@ public:
 	Flat(int floor_f) :Flat{ floor_f,0,0 } {}
 	Flat() :Flat{ 0,0,0 } {}
 
-	Person& get_Person() {
+	Person& get_Person()  {
 		return p;
 	}
-	int get_floor() {
+	int& get_floor() {
 		return floor;
 	}
-	int get_flatNum() {
+	int& get_flatNum()  {
 		return flat_num;
 	}
 };

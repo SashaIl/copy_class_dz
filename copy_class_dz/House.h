@@ -25,6 +25,26 @@ public:
 	House(const House& obj) : house_num{ obj.house_num }, floors{ obj.floors }, f{ obj.f } {}
 
 
+	House(House&& another) {
+		house_num = another.house_num;
+		floors = another.floors;
+
+		f.get_flatNum() = another.f.get_flatNum();
+		f.get_floor() = another.f.get_floor();
+		f.get_Person() = move(another.f.get_Person());
+
+		another.house_num = 0;
+		floors = another.floors = 0;
+		another.f.get_flatNum() = 0;
+		another.f.get_floor() = 0;
+		another.f.get_Person().get_age() = 0;
+		another.f.get_Person().get_number() = 0;
+		another.f.get_Person().get_Fullname() = 0;
+		//i dont know 
+	}
+
+
+
 	const int get_house_num() {
 		return house_num;
 	}
